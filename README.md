@@ -4,33 +4,33 @@
 
 ### - Sign up or Log in
 
-![login](/src/readMeImages/login.png)
+![login](/readMeImages/login.png)
 
 ### - Upload employees and companies to the database
 
-![home](/src/readMeImages/home.png)
+![home](/readMeImages/home.png)
 
 ### - Complete list of companies
 
-![manager1](/src/readMeImages/manager1.png)
+![manager1](/readMeImages/manager1.png)
 
 ### From here you can visit the "employees page" or "assign employees page":
 
-![manager2](/src/readMeImages/manager2.png)
+![manager2](/readMeImages/manager2.png)
 
 ### - Complete list of employees
 
-![employees1](/src/readMeImages/employees1.png)
+![employees1](/readMeImages/employees1.png)
 
 ### - A list with only those employees not assigned to a company
 
-![employees2](/src/readMeImages/employees2.png)
+![employees2](/readMeImages/employees2.png)
 
 ### - Assign employees to companies
 
 ### In this page you just need to select the employee and the company, then press the Submit button.
 
-![assign](/src/readMeImages/assign.png)
+![assign](/readMeImages/assign.png)
 
 ## **[Link to the website](https://companyemployees.netlify.app/)**
 
