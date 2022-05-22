@@ -20,7 +20,7 @@ router.post("/", isLoggedIn, (req, res) => {
     .all([employeeRequest, companyRequest])
     .then(
       axios.spread((employees, companies) => {
-        console.log("employees:", employees.data, "companies:", companies.data);
+        // console.log("employees:", employees.data, "companies:", companies.data);
         Employee.deleteMany({}).then(() => {
           Employee.insertMany(employees.data);
         });

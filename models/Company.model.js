@@ -14,6 +14,11 @@ const companySchema = new Schema(
     },
     employee: {
       type: String,
+      default: "Not yet assigned",
+    },
+    assigned: {
+      type: Boolean,
+      default: false,
     },
   },
   {
