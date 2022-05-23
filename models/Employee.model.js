@@ -1,6 +1,9 @@
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
+// In the company propperty, we could reference it to the company schema using:
+// Schema.Types.ObjectId,
+// ref: "Company"
+// This way we could populate the company property and get all the info from that particular company
 const employeeSchema = new Schema(
   {
     first_name: {

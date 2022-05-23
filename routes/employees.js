@@ -5,6 +5,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 const Employee = require("../models/Employee.model");
 const Company = require("../models/Company.model");
 
+// Get all the employees from the db
 router.get("/", isLoggedIn, (req, res) => {
   Employee.find({})
     .then((allEmployees) => {
@@ -15,6 +16,7 @@ router.get("/", isLoggedIn, (req, res) => {
     });
 });
 
+// Get all employees not yet assigned to a company (assigned:false)
 router.get("/employeesNotAssigned", isLoggedIn, (req, res) => {
   Employee.find({ assigned: false })
     .then((employeesNotAssigned) => {
@@ -25,6 +27,7 @@ router.get("/employeesNotAssigned", isLoggedIn, (req, res) => {
     });
 });
 
+// Get all the companies with no employees assigned (assigned:false)
 router.get("/companiesWithNoEmployees", isLoggedIn, (req, res) => {
   Company.find({ assigned: false })
     .then((companiesWithNoEmployees) => {
@@ -36,14 +39,17 @@ router.get("/companiesWithNoEmployees", isLoggedIn, (req, res) => {
     });
 });
 
+// Assign employee
 router.post("/assign", isLoggedIn, (req, res) => {
+  // Get the inputs from the form
   const { employee, company } = req.body;
-  // console.log(req.body);
+  // Find the employee and adds the company, changes the status assigned to true.
   Employee.findOneAndUpdate(
     { first_name: employee },
     { company: company, assigned: true },
     { new: true }
   )
+    // Find the company and assign the employye, changes the status assigned to true.
     .then((found) => {
       // console.log(found);
       Company.findOneAndUpdate(

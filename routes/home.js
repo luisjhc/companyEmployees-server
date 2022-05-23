@@ -7,7 +7,7 @@ const Company = require("../models/Company.model");
 router.post("/", isLoggedIn, (req, res) => {
   // GETTING THE INPUTS FROM THE FORM 👇
   const { number } = req.body;
-
+  // Save the url with the number selected in a variable
   const employeeRequest = axios.get(
     `https://random-data-api.com/api/users/random_user?size=${number}`
   );
@@ -15,12 +15,12 @@ router.post("/", isLoggedIn, (req, res) => {
     `https://random-data-api.com/api/company/random_company?size=${number}`
   );
 
-  // MAKING THE REQUEST TO THE API 👇
+  // Make both request employees and companies, at the same time
   axios
     .all([employeeRequest, companyRequest])
     .then(
       axios.spread((employees, companies) => {
-        // console.log("employees:", employees.data, "companies:", companies.data);
+        // First delete completely the db and then insert all the employees and companies coming from the api
         Employee.deleteMany({}).then(() => {
           Employee.insertMany(employees.data);
         });
@@ -38,7 +38,7 @@ router.post("/", isLoggedIn, (req, res) => {
       console.log("err:", err);
     });
 
-  //     // If we wanted to check if the employee already exists in the database before adding it
+  //     // If we wanted to check if the employee already exists in the database before adding it. This way we can keep the data that is already in the db
   //     // const newemployees = employees.map((employee) => {
   //     //   // Employee.findOne({ email: employee.email })
   //     //   Employee.findOne({ email: employee.email })

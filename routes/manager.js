@@ -4,6 +4,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 const Company = require("../models/Company.model");
 
+// Get all the companies and send them to the front end
 router.get("/", isLoggedIn, (req, res) => {
   Company.find({})
     .then((allCompanies) => {
